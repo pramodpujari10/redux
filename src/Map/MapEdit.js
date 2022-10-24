@@ -56,12 +56,17 @@ function Map() {
     ],
     zIndex: 1,
   };
-  const position = {
-    // lat: 37.772,
-    // lng: -122.214,
-    lat: 18.5204,
-    lng: 73.8567,
-  };
+
+  const markerList = [
+    {
+      lat: 18.5204,
+      lng: 73.8567,
+    },
+    {
+      lat: 18.6204,
+      lng: 73.7567,
+    },
+  ];
   return (
     <>
       <GoogleMap
@@ -70,7 +75,13 @@ function Map() {
         mapContainerClassName="container"
       >
         {" "}
-        <Marker onLoad={onLoad} position={position} />
+        {markerList && btnStatus ? (
+          markerList.map((item) => {
+            return <Marker onLoad={onLoad} position={item} />;
+          })
+        ) : (
+          <></>
+        )}
         {btnStatus ? (
           <Polyline onLoad={onLoad} path={path} options={options} />
         ) : (
@@ -80,7 +91,7 @@ function Map() {
       <div id="floating-panel">
         {/* <input id="remove-line" type="button" value="Remove line" />
         <input id="add-line" type="button" value="Restore line" /> */}
-        <button onClick={() => setBtnStatus(!btnStatus)}>
+        <button className="btn" onClick={() => setBtnStatus(!btnStatus)}>
           {btnStatus ? "Hide" : "Show"}
         </button>
       </div>
