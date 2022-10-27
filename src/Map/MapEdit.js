@@ -33,6 +33,7 @@ function Map() {
       { lat: 19.094, lng: 74.748 },
       { lat: 17.68, lng: 74.018 },
     ],
+    [{ lat: 16.705, lng: 74.243 }],
 
     // { lat: 37.772, lng: -122.214 },
     // { lat: 21.291, lng: -157.821 },
@@ -93,7 +94,15 @@ function Map() {
         {" "}
         {markerList && btnStatus ? (
           markerList.map((item) => {
-            return <Marker onLoad={onLoad} position={item} />;
+            return (
+              <Marker
+                onLoad={onLoad}
+                position={item}
+                // icon={
+                //   "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+                // }
+              />
+            );
           })
         ) : (
           <></>
@@ -114,7 +123,7 @@ function Map() {
         )} */}
       </GoogleMap>
       <div id="floating-panel">
-        <button className="btn" onClick={() => setBtnStatus(!btnStatus)}>
+        <button className="btnS" onClick={() => setBtnStatus(!btnStatus)}>
           {btnStatus ? "Hide path" : "Show path"}
         </button>
       </div>

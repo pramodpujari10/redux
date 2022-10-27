@@ -19,3 +19,8 @@
   padding-right: 10px;
 }
 
+.btnS{
+    background-color: rgb(76, 124, 196);
+    /* font-size: 12px; */
+    border: none;
+}
